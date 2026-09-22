@@ -1,0 +1,14 @@
+{
+  "name": "RPM",
+  "offset": 256,
+  "rows": 16,
+  "columns": 16,
+  "cell_size": 1,
+  "endianness": "little",
+  "signed": false,
+  "factor": 1.0,
+  "math_offset": 0.0,
+  "unit": "rpm",
+  "comment": "Map d'exemple synthetique",
+  "is_heuristic": false
+}

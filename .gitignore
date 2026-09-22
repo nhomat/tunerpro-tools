@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/pyinstaller_work/
+runtime_data/
+TunerPro_CustomTools/
+TunerProToolsSuite-Windows.zip
+uninstall_tunerpro_tools.bat

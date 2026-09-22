@@ -1,0 +1,47 @@
+{
+  "warning": "Fichier fictif, ne represente aucun vehicule reel.",
+  "file_size": 4096,
+  "rpm_map": {
+    "offset": 256,
+    "rows": 16,
+    "columns": 16,
+    "cell_size": 1,
+    "endianness": "little",
+    "signed": false
+  },
+  "fuel_map": {
+    "offset": 512,
+    "rows": 8,
+    "columns": 8,
+    "cell_size": 2,
+    "endianness": "little",
+    "signed": false
+  },
+  "search_needle_hex": "DEADBEEF",
+  "search_needle_offset": 160,
+  "checksum_offset": 4092,
+  "checksum_algorithm": "crc32",
+  "checksum_zone": [
+    0,
+    4092
+  ],
+  "checksum_byte_order": "big",
+  "planted_differences": [
+    {
+      "offset": 261,
+      "delta": 5
+    },
+    {
+      "offset": 296,
+      "delta": 12
+    },
+    {
+      "offset": 522,
+      "delta": -3
+    },
+    {
+      "offset": 768,
+      "delta": 1
+    }
+  ]
+}

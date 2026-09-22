@@ -1,0 +1,160 @@
+=======================================================================
+TunerPro Tools Suite - Configuration du menu Custom Tools de TunerPro
+=======================================================================
+
+Ce fichier explique EXACTEMENT quoi saisir dans TunerPro RT pour ajouter
+chaque outil de la suite a son menu "Custom Tools" (Tools > Custom
+Tools > Add/Edit dans TunerPro RT).
+
+Pre-requis : avoir execute build_all.bat puis install_tunerpro_tools.bat
+sur une machine Windows, afin que les .exe existent dans :
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\
+
+Pour chaque outil ci-dessous, TunerPro demande trois champs :
+  - Menu Text          : le libelle affiche dans le menu
+  - Tool Filename       : le chemin complet vers l'executable
+  - Keyboard Shortcut   : un raccourci clavier optionnel (peut rester vide)
+
+-----------------------------------------------------------------------
+1) BIN Analyzer
+-----------------------------------------------------------------------
+Menu Text:
+BIN Analyzer
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\BinAnalyzer.exe
+
+Keyboard Shortcut:
+Ctrl+1
+
+-----------------------------------------------------------------------
+2) BIN Compare
+-----------------------------------------------------------------------
+Menu Text:
+BIN Compare
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\BinCompare.exe
+
+Keyboard Shortcut:
+Ctrl+2
+
+-----------------------------------------------------------------------
+3) Map Viewer
+-----------------------------------------------------------------------
+Menu Text:
+Map Viewer
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\MapViewer.exe
+
+Keyboard Shortcut:
+Ctrl+3
+
+-----------------------------------------------------------------------
+4) Lambda AFR Calculator
+-----------------------------------------------------------------------
+Menu Text:
+Lambda AFR Calculator
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\LambdaAfrCalculator.exe
+
+Keyboard Shortcut:
+Ctrl+4
+
+-----------------------------------------------------------------------
+5) Calibration Diff
+-----------------------------------------------------------------------
+Menu Text:
+Calibration Diff
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\CalibrationDiff.exe
+
+Keyboard Shortcut:
+Ctrl+5
+
+-----------------------------------------------------------------------
+6) Value Converter
+-----------------------------------------------------------------------
+Menu Text:
+Value Converter
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\ValueConverter.exe
+
+Keyboard Shortcut:
+Ctrl+6
+
+-----------------------------------------------------------------------
+7) Checksum Analyzer
+-----------------------------------------------------------------------
+Menu Text:
+Checksum Analyzer
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\ChecksumAnalyzer.exe
+
+Keyboard Shortcut:
+Ctrl+7
+
+-----------------------------------------------------------------------
+8) BIN Backup Manager
+-----------------------------------------------------------------------
+Menu Text:
+BIN Backup Manager
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\BackupManager.exe
+
+Keyboard Shortcut:
+Ctrl+8
+
+-----------------------------------------------------------------------
+9) Map Database
+-----------------------------------------------------------------------
+Menu Text:
+Map Database
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\MapDatabase.exe
+
+Keyboard Shortcut:
+Ctrl+9
+
+-----------------------------------------------------------------------
+10) Calibration Session
+-----------------------------------------------------------------------
+Menu Text:
+Calibration Session
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\SessionManager.exe
+
+Keyboard Shortcut:
+(aucun / au choix)
+
+-----------------------------------------------------------------------
+11) Dashboard (optionnel - lance les 10 outils depuis une seule fenetre)
+-----------------------------------------------------------------------
+Menu Text:
+TunerPro Tools - Dashboard
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\Dashboard.exe
+
+Keyboard Shortcut:
+Ctrl+0
+
+=======================================================================
+Notes
+=======================================================================
+- Si le dossier d'installation differe de C:\TunerProToolsSuite, adaptez
+  chaque "Tool Filename" en consequence.
+- Chaque outil est un executable independant : TunerPro les lance comme
+  n'importe quel programme externe et n'a besoin d'aucune autre
+  configuration.
+- Ces outils sont concus pour l'ANALYSE et la SIMULATION hors ligne. Ils
+  ne modifient jamais un fichier BIN original sans creer une copie au
+  prealable (voir SAFETY.md dans docs\).

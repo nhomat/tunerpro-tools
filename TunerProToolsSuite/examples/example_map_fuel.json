@@ -1,0 +1,14 @@
+{
+  "name": "Fuel",
+  "offset": 512,
+  "rows": 8,
+  "columns": 8,
+  "cell_size": 2,
+  "endianness": "little",
+  "signed": false,
+  "factor": 0.1,
+  "math_offset": 0.0,
+  "unit": "mg/cyc",
+  "comment": "Map d'exemple synthetique",
+  "is_heuristic": false
+}

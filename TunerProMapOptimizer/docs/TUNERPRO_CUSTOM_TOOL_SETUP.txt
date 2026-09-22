@@ -1,0 +1,28 @@
+=======================================================================
+Map Optimizer Assistant - configuration du Custom Tool TunerPro
+=======================================================================
+
+Pre-requis : avoir execute build_all.bat sur Windows, et copie
+dist\MapOptimizer.exe a l'emplacement de ton choix (ex. a cote des
+autres outils, dans C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\).
+
+Dans TunerPro RT : Tools > Custom Tools > Add
+
+Menu Text:
+Map Optimizer Assistant
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\MapOptimizer.exe
+
+(adapte ce chemin a l'endroit ou tu as reellement copie le .exe)
+
+Keyboard Shortcut:
+Ctrl+Shift+O   (ou laisse vide)
+
+=======================================================================
+Rappel
+=======================================================================
+Cet outil ne modifie jamais un fichier BIN. Il affiche uniquement des
+suggestions (lissage + cellules isolees signalees) que tu peux exporter
+en CSV pour reference. Toute valeur retenue doit etre resaisie a la
+main dans l'editeur de tables de TunerPro, apres relecture.

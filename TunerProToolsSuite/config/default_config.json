@@ -1,0 +1,20 @@
+{
+  "app_name": "TunerPro Tools Suite",
+  "version": "0.1.0",
+  "theme": "dark",
+  "keyboard_shortcuts": {
+    "open_file": "Ctrl+O",
+    "save": "Ctrl+S",
+    "save_report": "Ctrl+R",
+    "quit": "Ctrl+Q",
+    "goto_offset": "Ctrl+G",
+    "find": "Ctrl+F"
+  },
+  "checksum": {
+    "default_algorithm": "crc32"
+  },
+  "map_viewer": {
+    "default_cell_size": 1,
+    "default_endianness": "little"
+  }
+}
