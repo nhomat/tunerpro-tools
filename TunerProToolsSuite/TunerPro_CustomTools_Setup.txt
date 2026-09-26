@@ -136,7 +136,19 @@ Keyboard Shortcut:
 (aucun / au choix)
 
 -----------------------------------------------------------------------
-11) Dashboard (optionnel - lance les 10 outils depuis une seule fenetre)
+11) Calibration Workbench
+-----------------------------------------------------------------------
+Menu Text:
+Calibration Workbench
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\CalibrationWorkbench.exe
+
+Keyboard Shortcut:
+(aucun / au choix)
+
+-----------------------------------------------------------------------
+12) Dashboard (optionnel - lance les 11 outils depuis une seule fenetre)
 -----------------------------------------------------------------------
 Menu Text:
 TunerPro Tools - Dashboard

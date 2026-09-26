@@ -34,6 +34,7 @@ TOOLS = [
     ("BIN Backup Manager", "backup_manager"),
     ("Map Database", "map_database"),
     ("Calibration Session", "session_manager"),
+    ("Calibration Workbench", "calibration_workbench"),
 ]
 
 

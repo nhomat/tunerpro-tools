@@ -40,6 +40,7 @@ TOOLS = [
     ("BackupManager", "backup_manager"),
     ("MapDatabase", "map_database"),
     ("SessionManager", "session_manager"),
+    ("CalibrationWorkbench", "calibration_workbench"),
 ]
 
 all_binaries = []

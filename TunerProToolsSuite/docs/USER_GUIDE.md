@@ -109,3 +109,29 @@ automatiquement a partir d'un fichier BIN.
 Projet `.tpsuite` regroupant BIN original/modifie, maps utilisees,
 notes libres et historique horodate des actions. **Nouveau / Ouvrir /
 Enregistrer** (**Ctrl+O** / **Ctrl+S**).
+
+## Calibration Workbench (mode MODIFICATION DE FICHIER)
+
+Poste de travail regroupant analyse, edition et export en un seul
+outil, sur une copie de travail en memoire (le fichier source n'est
+jamais touche avant un export explicite) :
+
+- **Analyse** : lance un scan heuristique honnete (axes monotones,
+  tables 2D lisses) avec un score de confiance calcule - jamais un
+  role automobile invente (ignition/injection/etc.), toujours "axe
+  probable" ou "table 2D probable". Double-clic sur un resultat pour le
+  charger dans l'onglet Edition.
+- **Checksum** : detection automatique de l'algorithme (teste XOR,
+  SUM, CRC8/16/32 contre le fichier ; "aucun identifie" si rien ne
+  correspond), comparaison ancien/nouveau checksum, recalcul explicite
+  (jamais automatique).
+- **Edition manuelle** : cellules directement modifiables dans le
+  tableau ; **Appliquer les modifications** enregistre l'action dans
+  l'historique.
+- **Comparaison avant/apres** : heatmap de variation (faible/moderee/
+  importante) entre le fichier original et la copie de travail actuelle.
+- **Historique** + boutons **Annuler (Undo)** / **Retablir (Redo)** en
+  haut de la fenetre.
+- **GENERATE MODIFIED BIN** : ecrit la copie de travail vers un nouveau
+  fichier choisi par vous, apres confirmation - jamais le fichier
+  source.

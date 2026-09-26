@@ -147,3 +147,58 @@ def compute_checksum(
         stored_value=stored_value,
         matches=matches,
     )
+
+
+@dataclass(frozen=True)
+class ChecksumDetection:
+    """One algorithm/zone/byte-order combination whose computed value
+    exactly matched bytes already present in the file - i.e. real
+    evidence, not a guess."""
+
+    algorithm: str
+    zone_start: int
+    zone_end: int
+    checksum_offset: int
+    byte_order: str
+    value: int
+
+
+def detect_checksum(
+    data: bytes, *, zone_starts: tuple[int, ...] = (0,)
+) -> list[ChecksumDetection]:
+    """Brute-force every known algorithm against plausible end-anchored zones.
+
+    For each algorithm and each candidate zone start, treats the file's
+    last N bytes (N = the algorithm's natural width) as a stored
+    checksum over everything before it, in both byte orders, and reports
+    every exact match. An empty return means no supported algorithm/zone
+    combination matched anything in the file - that is reported as-is
+    (see ``ChecksumAnalyzerWindow`` / the GUI's "non identifie" state)
+    rather than falling back to a guess.
+    """
+    detections: list[ChecksumDetection] = []
+    for zone_start in zone_starts:
+        for algorithm in ALGORITHMS.values():
+            width = algorithm.width_bytes
+            checksum_offset = len(data) - width
+            if checksum_offset <= zone_start:
+                continue
+            zone = data[zone_start:checksum_offset]
+            computed = algorithm.func(zone)
+            stored_bytes = data[checksum_offset:checksum_offset + width]
+
+            byte_orders = ("big",) if width == 1 else ("big", "little")
+            for byte_order in byte_orders:
+                stored = int.from_bytes(stored_bytes, byteorder=byte_order, signed=False)
+                if stored == computed:
+                    detections.append(
+                        ChecksumDetection(
+                            algorithm=algorithm.key,
+                            zone_start=zone_start,
+                            zone_end=checksum_offset,
+                            checksum_offset=checksum_offset,
+                            byte_order=byte_order,
+                            value=stored,
+                        )
+                    )
+    return detections
