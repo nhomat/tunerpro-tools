@@ -148,7 +148,19 @@ Keyboard Shortcut:
 (aucun / au choix)
 
 -----------------------------------------------------------------------
-12) Dashboard (optionnel - lance les 11 outils depuis une seule fenetre)
+12) Vehicle Simulator
+-----------------------------------------------------------------------
+Menu Text:
+Vehicle Simulator
+
+Tool Filename:
+C:\TunerProToolsSuite\Tools\TunerPro_CustomTools\VehicleSimulator.exe
+
+Keyboard Shortcut:
+(aucun / au choix)
+
+-----------------------------------------------------------------------
+13) Dashboard (optionnel - lance les 12 outils depuis une seule fenetre)
 -----------------------------------------------------------------------
 Menu Text:
 TunerPro Tools - Dashboard

@@ -41,6 +41,7 @@ TOOLS = [
     ("MapDatabase", "map_database"),
     ("SessionManager", "session_manager"),
     ("CalibrationWorkbench", "calibration_workbench"),
+    ("VehicleSimulator", "vehicle_simulator"),
 ]
 
 all_binaries = []

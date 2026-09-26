@@ -35,6 +35,7 @@ TOOLS = [
     ("Map Database", "map_database"),
     ("Calibration Session", "session_manager"),
     ("Calibration Workbench", "calibration_workbench"),
+    ("Vehicle Simulator", "vehicle_simulator"),
 ]
 
 

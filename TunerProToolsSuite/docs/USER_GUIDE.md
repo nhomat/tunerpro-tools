@@ -135,3 +135,28 @@ jamais touche avant un export explicite) :
 - **GENERATE MODIFIED BIN** : ecrit la copie de travail vers un nouveau
   fichier choisi par vous, apres confirmation - jamais le fichier
   source.
+
+## Vehicle Simulator (mode SIMULATION)
+
+Estimation physique des performances a partir de vos donnees vehicule/
+moteur/transmission - jamais un chiffre fixe :
+
+- **Vehicule & Moteur** : masse, Cx, surface frontale, transmission
+  (rapports/rendements editables), couple et puissance maximaux (requis).
+  Un champ laisse a sa valeur par defaut (ex. coefficient de resistance
+  au roulement) est compte comme **estime**, pas comme mesure.
+- **Resultats** : temps 0-50/0-100/0-160/80-120/100-200 km/h et vitesse
+  maximale theorique, calcules par integration physique reelle (jamais
+  affiches si non atteints - alors "N/A"). Un encadre **SIMULATION
+  CONFIDENCE** (%) et une liste **LIMITATIONS OF MODEL** expliquent
+  exactement quelles donnees manquantes affectent la precision.
+- **Courbes couple/puissance** : courbe interpolee (jamais mesuree)
+  entre les points moteur declares.
+- **Analyse BIN** : meme scanner honnete que Calibration Workbench, a
+  titre informatif uniquement - aucune donnee detectee n'alimente
+  automatiquement le modele moteur (le role automobile d'une zone ne
+  peut pas etre determine avec certitude a partir des octets seuls).
+
+Non implementes dans cette version : animation du vehicule, tableau de
+bord "Live Data", gestionnaire de scenarios, comparaison de cartographies
+et generateur de rapport PDF.
