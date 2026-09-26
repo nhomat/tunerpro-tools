@@ -35,7 +35,8 @@ class ToolWindow(QMainWindow):
         self.tool_name = tool_name
         self.logger = get_tool_logger(tool_name)
         self.setWindowTitle(f"{title} - {APP_NAME}")
-        self.resize(1000, 700)
+        self.resize(1400, 900)
+        self.setMinimumSize(1000, 650)
 
         central = QWidget()
         self.setCentralWidget(central)
@@ -85,9 +86,14 @@ class ToolWindow(QMainWindow):
 
 
 def run_app(window_factory: Callable[[], QMainWindow]) -> int:
-    """Create the QApplication, apply the theme, show the window, run the loop."""
+    """Create the QApplication, apply the theme, show the window, run the loop.
+
+    Opens maximized: a fixed default size was too small on some screens
+    to show every column/table without manual resizing (the exact
+    complaint this addresses). The window remains freely resizable.
+    """
     app = QApplication.instance() or QApplication(sys.argv)
     apply_dark_theme(app)
     window = window_factory()
-    window.show()
+    window.showMaximized()
     return app.exec()

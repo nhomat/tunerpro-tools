@@ -40,7 +40,7 @@ from PySide6.QtWidgets import (
 from tunerpro_tools.app_base import ToolWindow, run_app
 from tunerpro_tools.logging_utils import log_operation
 from tunerpro_tools.map_model import MapDefinition, extract_map
-from tunerpro_tools.widgets.common import BinFileDropField, read_file_with_progress, show_error
+from tunerpro_tools.widgets.common import BinFileDropField, auto_fit_table, read_file_with_progress, show_error
 
 
 class MapViewerWindow(ToolWindow):
@@ -214,6 +214,7 @@ class MapViewerWindow(ToolWindow):
             for r, row in enumerate(matrix):
                 for c, value in enumerate(row):
                     table.setItem(r, c, QTableWidgetItem(fmt.format(value)))
+            auto_fit_table(table, stretch_last=False)
 
     # ------------------------------------------------------------------
     def _build_chart_tab(self) -> None:

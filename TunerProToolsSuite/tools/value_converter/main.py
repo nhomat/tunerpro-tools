@@ -24,7 +24,7 @@ from PySide6.QtWidgets import (
 from tunerpro_tools.app_base import ToolWindow, run_app
 from tunerpro_tools.converter import INT_TYPES, convert_all_types, parse_input_value
 from tunerpro_tools.logging_utils import log_operation
-from tunerpro_tools.widgets.common import show_error
+from tunerpro_tools.widgets.common import auto_fit_table, show_error
 
 
 class ValueConverterWindow(ToolWindow):
@@ -77,6 +77,7 @@ class ValueConverterWindow(ToolWindow):
                 self.table.setItem(row, 1, QTableWidgetItem(result.hex_value))
                 self.table.setItem(row, 2, QTableWidgetItem(str(result.dec_value)))
                 self.table.setItem(row, 3, QTableWidgetItem(result.bin_value))
+        auto_fit_table(self.table, stretch_last=False)
         log_operation(self.logger, "convert_value")
         self.set_status(f"Valeur convertie : {value}")
 

@@ -161,6 +161,12 @@ class CalibrationDiffWindow(ToolWindow):
                     item.setBackground(QBrush(_LEVEL_COLORS[level]))
                 self.heatmap.setItem(r, c, item)
 
+        # Uniform cell sizes read as a grid; resizing each column to its
+        # own content would make "+12" wider than an empty cell and
+        # break the heatmap's alignment.
+        self.heatmap.horizontalHeader().setDefaultSectionSize(56)
+        self.heatmap.verticalHeader().setDefaultSectionSize(28)
+
         modified_cells = len(deltas)
         self.cells_modified_label.setText(f"Cellules modifiees : {modified_cells}")
         if deltas:

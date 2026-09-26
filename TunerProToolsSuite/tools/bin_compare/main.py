@@ -21,6 +21,7 @@ from PySide6.QtWidgets import (
     QPlainTextEdit,
     QPushButton,
     QSpinBox,
+    QSplitter,
     QTableWidget,
     QTableWidgetItem,
     QTabWidget,
@@ -32,7 +33,7 @@ from tunerpro_tools.app_base import ToolWindow, run_app
 from tunerpro_tools.bin_file import BinFile
 from tunerpro_tools.compare import compare_bytes, differences_to_csv, differences_to_html, filter_differences
 from tunerpro_tools.logging_utils import log_operation
-from tunerpro_tools.widgets.common import BinFileDropField, read_file_with_progress, show_error
+from tunerpro_tools.widgets.common import BinFileDropField, auto_fit_table, read_file_with_progress, show_error
 
 
 class BinCompareWindow(ToolWindow):
@@ -154,6 +155,7 @@ class BinCompareWindow(ToolWindow):
             self.diff_table.setItem(row, 2, QTableWidgetItem(str(diff.modified)))
             sign = "+" if diff.delta >= 0 else ""
             self.diff_table.setItem(row, 3, QTableWidgetItem(f"{sign}{diff.delta}"))
+        auto_fit_table(self.diff_table)
         self._selected_index = -1
 
     def _navigate(self, direction: int) -> None:
@@ -209,16 +211,35 @@ class BinCompareWindow(ToolWindow):
         row.addStretch(1)
         layout.addLayout(row)
 
-        hex_row = QHBoxLayout()
+        # A QSplitter (rather than a plain side-by-side layout) lets the
+        # user drag the divider when one side needs more room - fixes the
+        # cramped/truncated hex columns reported on smaller windows.
+        splitter = QSplitter(Qt.Horizontal)
+
+        original_pane = QWidget()
+        original_layout = QVBoxLayout(original_pane)
+        original_layout.setContentsMargins(0, 0, 0, 0)
+        original_layout.addWidget(QLabel("Original"))
         self.original_hex_view = QPlainTextEdit()
         self.original_hex_view.setReadOnly(True)
+        self.original_hex_view.setLineWrapMode(QPlainTextEdit.NoWrap)
         self.original_hex_view.setFont(QFont("Consolas", 10))
+        original_layout.addWidget(self.original_hex_view)
+        splitter.addWidget(original_pane)
+
+        modified_pane = QWidget()
+        modified_layout = QVBoxLayout(modified_pane)
+        modified_layout.setContentsMargins(0, 0, 0, 0)
+        modified_layout.addWidget(QLabel("Modified"))
         self.modified_hex_view = QPlainTextEdit()
         self.modified_hex_view.setReadOnly(True)
+        self.modified_hex_view.setLineWrapMode(QPlainTextEdit.NoWrap)
         self.modified_hex_view.setFont(QFont("Consolas", 10))
-        hex_row.addWidget(self.original_hex_view)
-        hex_row.addWidget(self.modified_hex_view)
-        layout.addLayout(hex_row, 1)
+        modified_layout.addWidget(self.modified_hex_view)
+        splitter.addWidget(modified_pane)
+
+        splitter.setSizes([1, 1])
+        layout.addWidget(splitter, 1)
 
         self.tabs.addTab(tab, "Vue hexadecimale")
 

@@ -51,7 +51,7 @@ from map_optimizer.map_model import MapDefinition, extract_map
 from map_optimizer.optimizer import TuningTarget, generate_suggestions, generate_tuning_suggestion
 from map_optimizer.patch import UnsafeDestinationError, write_grid_to_copy
 from map_optimizer.theme import apply_dark_theme
-from map_optimizer.widgets.common import BinFileDropField, show_error
+from map_optimizer.widgets.common import BinFileDropField, auto_fit_table, show_error
 
 LISSAGE_DISCLAIMER = (
     "Cet onglet suggere un lissage et signale des cellules isolees, sur la base "
@@ -209,6 +209,7 @@ class LissageTab(QWidget):
                     item.setBackground(QBrush(QColor(100, 60, 30)))
                     item.setToolTip("Ecart isole par rapport aux cellules voisines - verification manuelle recommandee.")
                 self.table.setItem(r, c, item)
+        auto_fit_table(self.table, stretch_last=False)
 
     def _export_csv(self) -> None:
         if self.suggestion is None:
@@ -340,6 +341,7 @@ class TuningTab(QWidget):
                     item.setBackground(QBrush(QColor(30, 70, 100)))
                     item.setToolTip("Point de reference saisi par l'utilisateur.")
                 self.table.setItem(r, c, item)
+        auto_fit_table(self.table, stretch_last=False)
 
     def _write_copy(self) -> None:
         source_path = self.config.path_field.path()
@@ -384,7 +386,8 @@ class MapOptimizerWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Map Optimizer Assistant - TunerPro Tools")
-        self.resize(1150, 800)
+        self.resize(1400, 900)
+        self.setMinimumSize(1000, 650)
 
         central = QWidget()
         self.setCentralWidget(central)
@@ -412,7 +415,7 @@ def main() -> int:
     app = QApplication.instance() or QApplication(sys.argv)
     apply_dark_theme(app)
     window = MapOptimizerWindow()
-    window.show()
+    window.showMaximized()
     return app.exec()
 
 

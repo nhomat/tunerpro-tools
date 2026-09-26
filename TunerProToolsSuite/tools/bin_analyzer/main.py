@@ -38,7 +38,7 @@ from tunerpro_tools.app_base import ToolWindow, run_app
 from tunerpro_tools.bin_file import BinFile
 from tunerpro_tools.logging_utils import log_operation
 from tunerpro_tools.report import save_analysis_report_html, save_analysis_report_json
-from tunerpro_tools.widgets.common import BinFileDropField, read_file_with_progress, show_error
+from tunerpro_tools.widgets.common import BinFileDropField, auto_fit_table, read_file_with_progress, show_error
 
 
 class BinAnalyzerWindow(ToolWindow):
@@ -267,6 +267,7 @@ class BinAnalyzerWindow(ToolWindow):
         for row, match in enumerate(matches):
             self.results_table.setItem(row, 0, QTableWidgetItem(match.offset_hex))
             self.results_table.setItem(row, 1, QTableWidgetItem(str(match.offset)))
+        auto_fit_table(self.results_table)
         self.set_status(f"{len(matches)} resultat(s) trouve(s).")
         log_operation(self.logger, "search", str(self.bin_file.path))
 

@@ -32,6 +32,7 @@ from tunerpro_tools.lambda_afr import (
     lambda_to_afr,
 )
 from tunerpro_tools.logging_utils import log_operation
+from tunerpro_tools.widgets.common import auto_fit_table
 
 
 class LambdaAfrWindow(ToolWindow):
@@ -108,6 +109,7 @@ class LambdaAfrWindow(ToolWindow):
         for row, (lam, afr) in enumerate(table_rows):
             self.table.setItem(row, 0, QTableWidgetItem(f"{lam:.2f}"))
             self.table.setItem(row, 1, QTableWidgetItem(f"{afr:.3f}"))
+        auto_fit_table(self.table)
 
 
 def main() -> int:

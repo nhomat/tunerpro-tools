@@ -3,7 +3,15 @@ from __future__ import annotations
 
 from PySide6.QtCore import Qt, Signal
 from PySide6.QtGui import QDragEnterEvent, QDropEvent
-from PySide6.QtWidgets import QFileDialog, QHBoxLayout, QLineEdit, QMessageBox, QPushButton, QWidget
+from PySide6.QtWidgets import (
+    QFileDialog,
+    QHBoxLayout,
+    QLineEdit,
+    QMessageBox,
+    QPushButton,
+    QTableWidget,
+    QWidget,
+)
 
 
 class BinFileDropField(QWidget):
@@ -52,3 +60,12 @@ class BinFileDropField(QWidget):
 
 def show_error(parent, title: str, message: str) -> None:
     QMessageBox.critical(parent, title, message)
+
+
+def auto_fit_table(table: QTableWidget, *, stretch_last: bool = True) -> None:
+    """Size every column to its content so numbers/text are never clipped."""
+    table.resizeColumnsToContents()
+    table.resizeRowsToContents()
+    header = table.horizontalHeader()
+    header.setStretchLastSection(stretch_last)
+    header.setMinimumSectionSize(60)

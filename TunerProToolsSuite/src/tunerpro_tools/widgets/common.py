@@ -9,11 +9,13 @@ from PySide6.QtGui import QDragEnterEvent, QDropEvent
 from PySide6.QtWidgets import (
     QFileDialog,
     QHBoxLayout,
+    QHeaderView,
     QLabel,
     QLineEdit,
     QMessageBox,
     QProgressDialog,
     QPushButton,
+    QTableWidget,
     QWidget,
 )
 
@@ -90,6 +92,20 @@ def experimental_warning_label() -> QLabel:
     label.setObjectName("WarningBanner")
     label.setWordWrap(True)
     return label
+
+
+def auto_fit_table(table: QTableWidget, *, stretch_last: bool = True) -> None:
+    """Size every column to its content so numbers/text are never clipped.
+
+    Call this after populating a QTableWidget (setRowCount/setItem loop).
+    Without it, Qt leaves columns at a small default width and the user
+    has to manually drag each one to read a full value.
+    """
+    table.resizeColumnsToContents()
+    table.resizeRowsToContents()
+    header = table.horizontalHeader()
+    header.setStretchLastSection(stretch_last)
+    header.setMinimumSectionSize(60)
 
 
 def confirm_destructive_action(parent, title: str, question: str) -> bool:
